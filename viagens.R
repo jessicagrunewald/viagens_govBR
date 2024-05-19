@@ -18,5 +18,10 @@ viagens$data.inicio <- as.Date(viagens$`Período - Data de início`,
 # Criando coluna com o mês do inicio da viagem
 viagens$data.inicio.mes <- format(viagens$data.inicio, format = "%m")
 
-# Verificar informação sobre cada coluna
-glimpse(viagens)
+# Verificando medidas da coluna Valor passagens
+summary(viagens$`Valor passagens`)
+sd(viagens$`Valor passagens`)
+
+# Verificando a porcentagem de viagens realizadas
+prop.table(table(viagens$Situação))*100
+

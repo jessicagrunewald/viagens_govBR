@@ -25,6 +25,7 @@ sd(viagens$`Valor passagens`)
 # Verificando a porcentagem de viagens realizadas
 prop.table(table(viagens$Situação))*100
 
+# GASTOS COM PASSAGENS
 # Criando um dataframe com os 15 principais órgãos com maiores valores de gastos
 gastos_passagens <- viagens %>%
   group_by(`Nome do órgão superior`) %>%
@@ -36,3 +37,11 @@ names(gastos_passagens) <- c("orgao","valor")
 
 gastos_passagens
 
+library(ggplot2)
+
+# Gráfico de barras horizontais com ggplot2 dos valores gastos em passagens
+ggplot(gastos_passagens, aes(x = reorder(orgao, valor), y = valor))+
+  geom_bar(stat = "identity", fill = "pink")+
+  geom_text(aes(label=valor), vjust=0.3, size=3)+
+  coord_flip()+
+  labs(x="Órgãos", y="Valor")

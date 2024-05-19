@@ -25,3 +25,14 @@ sd(viagens$`Valor passagens`)
 # Verificando a porcentagem de viagens realizadas
 prop.table(table(viagens$Situação))*100
 
+# Criando um dataframe com os 15 principais órgãos com maiores valores de gastos
+gastos_passagens <- viagens %>%
+  group_by(`Nome do órgão superior`) %>%
+  summarise(n = sum(`Valor passagens`)) %>%
+  arrange(desc(n)) %>%
+  head(15)
+
+names(gastos_passagens) <- c("orgao","valor")
+
+gastos_passagens
+

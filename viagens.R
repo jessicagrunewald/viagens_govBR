@@ -9,11 +9,14 @@ viagens <- read.csv2(
 )
 
 library(dplyr)
-# Verificar informação sobre cada coluna
-glimpse(viagens)
 
 # Criando uma nova coluna com os dados da coluna Período - Data de início
 # no formato Date
-viagens$data.inicio <- as.Date(viajens$`Período - Data de início`,
+viagens$data.inicio <- as.Date(viagens$`Período - Data de início`,
                                format = "%d/%m/%Y")
 
+# Criando coluna com o mês do inicio da viagem
+viagens$data.inicio.mes <- format(viagens$data.inicio, format = "%m")
+
+# Verificar informação sobre cada coluna
+glimpse(viagens)

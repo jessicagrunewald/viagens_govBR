@@ -45,3 +45,19 @@ ggplot(gastos_passagens, aes(x = reorder(orgao, valor), y = valor))+
   geom_text(aes(label=valor), vjust=0.3, size=3)+
   coord_flip()+
   labs(x="Órgãos", y="Valor")
+
+# Os 15 destinos com maiores valores de passagens, quando
+# o nome do órgão estiver indicado como "Sem Informação"
+viagens_sem_info <- viagens %>%
+  filter(`Nome do órgão superior` == "Sem informação") %>%
+  group_by(`Destinos`) %>%
+  summarise(n = sum(`Valor passagens`)) %>%
+  arrange(desc(n)) %>%
+  head(15)
+
+# Exibir o resultado
+print(viagens_sem_info)
+
+
+
+

@@ -68,3 +68,15 @@ ggplot(data = viagens_sem_info %>% slice(1:3), aes(x = "", y = "", fill = Destin
   labs(title = "Top 3 Destinos com maiores Valores de Passagens - Órgão Sem Informação") +
   theme_minimal() +
   geom_text(aes(label = percent(round(n / sum(viagens$`Valor passagens`), 4))), position = position_stack(vjust = 0.5))
+
+# Os 15 destinos com maiores valores de passagens, quando
+# o nome do órgão estiver indicado como "Ministério das Relações Exteriores"
+viagens_min_rela_ext <- viagens %>%
+  filter(`Nome do órgão superior` == "Ministério das Relações Exteriores") %>%
+  group_by(Destinos) %>%
+  summarise(n = n()) %>%
+  arrange(desc(n)) %>%
+  head(15)
+
+print(viagens_min_rela_ext)
+

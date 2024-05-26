@@ -55,9 +55,16 @@ viagens_sem_info <- viagens %>%
   arrange(desc(n)) %>%
   head(15)
 
-# Exibir o resultado
 print(viagens_sem_info)
 
+library(scales)
 
-
-
+# Gráfico de pizza mostrando apenas os 3 itens com maior valor de passagem
+# quando a categoria do órgão é igual a "Sem informação"
+ggplot(data = viagens_sem_info %>% slice(1:3), aes(x = "", y = "", fill = Destinos)) +
+  geom_bar(stat = "identity", width = 1) +
+  coord_polar("y", start = 0) +
+  scale_fill_brewer(palette = "Set2") +
+  labs(title = "Top 3 Destinos com maiores Valores de Passagens - Órgão Sem Informação") +
+  theme_minimal() +
+  geom_text(aes(label = percent(round(n / sum(viagens$`Valor passagens`), 4))), position = position_stack(vjust = 0.5))

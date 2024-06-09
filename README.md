@@ -1,7 +1,7 @@
 :small_blue_diamond: 🇵🇹
-### Vendas em Python
+### Viagens governo brasileiro
 
-Atividade em R, aplicadas em uma base de dados de viajens realizadas pelo governo brasileiro no ano de 2019, disponível no Portal da Transparência.
+Atividade em R, aplicadas em uma base de dados de viagens realizadas pelo governo brasileiro no ano de 2019, disponível no Portal da Transparência.
 
 :file_folder: Link para acesso a base de dados [aqui](https://portaldatransparencia.gov.br/download-de-dados/viagens)
 
